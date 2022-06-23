@@ -1,5 +1,7 @@
 export function Lesson(){
     return(
-    <h1>Lesson</h1>
+    <a href="#">
+        <span>Terça • 22 de junho • 19h00</span>
+    </a>
     );
 }
