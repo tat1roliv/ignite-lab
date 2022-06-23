@@ -7,14 +7,13 @@ import { Sidebar } from './components/Sidebar'
 import { Video } from './components/Video'
 import { Lesson } from './components/Lesson'
 
+import { Evento } from './pages/Evento'
+
 function App() {
 
   return (
     <div>
-      <Header />
-      <Sidebar />
-      <Video />
-      <Lesson />
+      <Evento />
     </div>
   )
 }

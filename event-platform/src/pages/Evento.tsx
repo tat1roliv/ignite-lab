@@ -1,5 +1,6 @@
+import { Header } from '../components/Header'
 export function Evento(){
     return(
-        <h1>Evento</h1>
+        <Header />
     )
 }
