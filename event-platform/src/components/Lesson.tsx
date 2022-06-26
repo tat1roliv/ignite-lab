@@ -1,20 +1,42 @@
-import { CheckCircle } from 'phosphor-react'
+import { CheckCircle, Lock } from 'phosphor-react'
+import {isPast } from 'date-fns'
 
-export function Lesson(){
+interface LessonProps{
+    title: string;
+    slug: string;
+    availableAt: Date;
+    type: 'live' | 'class';
+}
+
+export function Lesson(props: LessonProps){
+
+    const isLessonAvailable = isPast(props.availableAt);
+
     return(
     <a href="#">
         <span className="text-gray-300">
-            Terça • 22 de junho • 19h00
+            {props.availableAt.toString()}
         </span>
         <div className="rounded border border-gray-500 p-4 mt-2">
             <header className="flex items-center justify-between">
-                <span className="flex items-center gap-2 text-sm text-blue-500 font-medium">
-                    <CheckCircle size={20} />
-                    Em breve
+                {isLessonAvailable ? (
+                    <span className="flex items-center gap-2 text-sm text-blue-500 font-medium">
+                        <CheckCircle size={20} />
+                        Conteúdo liberado
+                    </span>
+                ) : (
+                    <span className="flex items-center gap-2 text-sm text-orange-500 font-medium">
+                        <Lock size={20} />
+                        Em breve
+                    </span>
+                    )}
+                <span className="text-xs rounded px-2 py-[2px] text-white border border-green-300 font-bold">
+                    {props.type === 'live' ? 'ao vivo' : 'aula prática'}
                 </span>
-                <span className="text-xs rounded px-2 py-[2px] text-white border border-green-300 font-bold">aula prática</span>
             </header>
-            <strong className="text-gray-200 mt-5">Aula 02 - Titulo aula ignite labs</strong>
+            <strong className="text-gray-200 mt-5">
+                {props.title}
+            </strong>
         </div>
     </a>
     );
