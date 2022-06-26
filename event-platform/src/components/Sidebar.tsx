@@ -3,7 +3,7 @@ import { gql, useQuery } from '@apollo/client';
 
 const GET_LESSONS_QUERY = gql`
     query {
-        lessons(orderBy: availableAt, stage: PUBLISHED){
+        lessons(orderBy: availableAt_ASC, stage: PUBLISHED) {
             id
             lessonType
             availableAt
@@ -14,18 +14,19 @@ const GET_LESSONS_QUERY = gql`
 `
 
 interface GetLessonsQueryResponse {
-    lessons: {
-        id: string
-        title: string
-        slug: string
-        availableAt: string
-        lessonType: 'live' | 'class'
-    } []
-  }
+  lessons: {
+      id: string
+      title: string
+      slug: string
+      availableAt: string
+      lessonType: 'live' | 'class'
+  }[]
+}
 
 export function Sidebar(){
 
-    const { data } = useQuery<GetLessonsQueryResponse>(GET_LESSONS_QUERY)
+  const { data } = useQuery<GetLessonsQueryResponse>(GET_LESSONS_QUERY)
+
     //console.log(data)
 
     return(
@@ -34,18 +35,18 @@ export function Sidebar(){
             Cronograma de aulas
         </span>
         <div className="flex flex-col gap-8">
-        {data?.lessons.map((lesson) => {
-          return (
-            <Lesson
-              key={lesson.id}
-              title={lesson.title}
-              slug={lesson.slug}
-              availableAt={new Date(lesson.availableAt)}
-              type={lesson.lessonType}
-            />
-          );
-        })}
-        </div>
+          {data?.lessons.map(lesson => {
+              return (
+                  <Lesson
+                      key={lesson.id}
+                      title={lesson.title}
+                      slug={lesson.slug}
+                      availableAt={new Date(lesson.availableAt)}
+                      type={lesson.lessonType}
+                  />
+                )
+            })}
+          </div>
     </aside>
     )
 }
