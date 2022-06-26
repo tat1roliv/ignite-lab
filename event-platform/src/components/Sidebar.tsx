@@ -13,16 +13,15 @@ const GET_LESSONS_QUERY = gql`
     }
 `
 
-interface GetLessonsQueryResponse{
+interface GetLessonsQueryResponse {
     lessons: {
         id: string
         title: string
         slug: string
         availableAt: string
         lessonType: 'live' | 'class'
-    }[]
-}
-
+    } []
+  }
 
 export function Sidebar(){
 
@@ -35,17 +34,17 @@ export function Sidebar(){
             Cronograma de aulas
         </span>
         <div className="flex flex-col gap-8">
-          {data?.lessons.map(lesson => {
-            return(
-                <Lesson 
-                    key={lesson.id}
-                    title={lesson.title}
-                    slug={lesson.slug}
-                    availableAt={new Date(lesson.availableAt)}
-                    type={lesson.lessonType}
-                />
-            )
-          })}
+        {data?.lessons.map((lesson) => {
+          return (
+            <Lesson
+              key={lesson.id}
+              title={lesson.title}
+              slug={lesson.slug}
+              availableAt={new Date(lesson.availableAt)}
+              type={lesson.lessonType}
+            />
+          );
+        })}
         </div>
     </aside>
     )
