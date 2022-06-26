@@ -39,7 +39,18 @@ export function Sidebar(){
         <div className="flex flex-col gap-8">
           
              
-          <Lesson/>
+                    <Lesson
+                       // key={lesson.id}
+                        //title={lesson.title}
+                        //slug={lesson.slug}
+                        //availableAt={new Date(lesson.availableAt)}
+                        //type={lesson.lessonType}
+                        key= 'etst'
+                        title= 'etst'
+                        slug= 'etst'
+                        availableAt={ new Date() }
+                        type='class'
+                    />
                 
         
           </div>
