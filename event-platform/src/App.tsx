@@ -7,12 +7,21 @@
 //import { Lesson } from './components/Lesson'
 
 import { Evento } from './pages/Evento'
+import { Router } from './Router'
+import { ApolloProvider } from './../node_modules/@apollo/client/react/context/ApolloProvider';
+import { client } from './lib/apollo';
+import { BrowserRouter } from 'react-router-dom';
+
 
 function App() {
 
   return (
     <div>
-      <Evento />
+      <ApolloProvider client={client}>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </ApolloProvider>
     </div>
   )
 }
