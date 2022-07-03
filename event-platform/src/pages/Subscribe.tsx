@@ -25,7 +25,7 @@ export function Subscribe(){
                         />
                         <button
                         type="submit"
-                        className="bg-green-500 mt-4 py-5 uppercase rounded font-bold text-sm hover:bg-green-700">
+                        className="bg-green-500 mt-4 py-5 uppercase rounded font-bold text-sm hover:bg-green-700 transition-colors">
                             Garantir inscrição
                         </button>
                     </form>
