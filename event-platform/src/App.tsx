@@ -6,7 +6,7 @@
 //import { Sidebar } from './components/Sidebarimport { Video } from './components/Video'
 //import { Lesson } from './components/Lesson'
 
-import { Evento } from './pages/Evento'
+//import { Evento } from './pages/Evento'
 import { Router } from './Router'
 import { ApolloProvider } from './../node_modules/@apollo/client/react/context/ApolloProvider';
 import { client } from './lib/apollo';
