@@ -1,6 +1,6 @@
 import { Logo } from '../components/Logo';
 import { useState , FormEvent } from 'react';
-import { gql, useQuery } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 
 
 const CREATE_SUBSCRIBER_MUTATION = gql`
@@ -16,10 +16,20 @@ export function Subscribe(){
 const [name, setName] = useState('');
 const [email, setEmail] = useState('');
 
+const [ createSubscriber, { data } ] = useMutation(CREATE_SUBSCRIBER_MUTATION);
+
+
 function handleSubscribe(event: FormEvent){
     event.preventDefault;
-    //console.log(name,email);
-
+    
+    createSubscriber({
+        variables: {
+            name,
+            email,
+        }
+    })
+        
+    
 }
 
     return(
@@ -38,13 +48,13 @@ function handleSubscribe(event: FormEvent){
                             className="bg-gray-900 rounded px-5 h-14 mt-5"
                             type="text" 
                             placeholder="Digite seu nome"
-                            onChange={ event => setName(event.target.value)}
+                            onChange={event => setName(event.target.value)}
                          />
                         <input 
                             className="bg-gray-900 rounded px-5 h-14 "
                             type="email" 
                             placeholder="Digite seu e-mail" 
-                            onChange={ event => setEmail(event.target.value)}
+                            onChange={event => setEmail(event.target.value)}
                         />
                         <button
                         type="submit"
