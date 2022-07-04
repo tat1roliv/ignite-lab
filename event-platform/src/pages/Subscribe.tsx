@@ -1,36 +1,37 @@
-import { Logo } from '../components/Logo';
-import { useState , FormEvent } from 'react';
-import { gql, useMutation } from '@apollo/client';
+import { gql, useMutation } from "@apollo/client";
+import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Logo } from "../components/Logo";
 
 
 const CREATE_SUBSCRIBER_MUTATION = gql`
-mutation CreateSubscriber($name: String! , $email: String!) {
-  createSubscriber(data: {name: $name, email: $email}) {
-    id
+  mutation CreateSubscriber($name: String!, $email: String!) {
+    createSubscriber(data: {name: $name, email: $email}) {
+      id
+    }
   }
-}
 `
 
-export function Subscribe(){
-
-const [name, setName] = useState('');
-const [email, setEmail] = useState('');
-
-const [ createSubscriber, { data } ] = useMutation(CREATE_SUBSCRIBER_MUTATION);
-
-
-function handleSubscribe(event: FormEvent){
-    event.preventDefault;
-    
-    createSubscriber({
+export function Subscribe() {
+    const navigate = useNavigate()
+  
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+  
+    const [createSubscriber, { loading }] = useMutation(CREATE_SUBSCRIBER_MUTATION)
+  
+    async function handleSubscribe(event: FormEvent) {
+      event.preventDefault();
+  
+      await createSubscriber({
         variables: {
-            name,
-            email,
+          name,
+          email,
         }
-    })
-        
-    
-}
+      })
+  
+      navigate('/evento')
+    }
 
     return(
         <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
