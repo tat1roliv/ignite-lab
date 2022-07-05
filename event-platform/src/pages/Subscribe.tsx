@@ -13,6 +13,7 @@ const CREATE_SUBSCRIBER_MUTATION = gql`
 `
 
 export function Subscribe() {
+
     const navigate = useNavigate()
   
     const [name, setName] = useState('');
@@ -58,8 +59,9 @@ export function Subscribe() {
                             onChange={event => setEmail(event.target.value)}
                         />
                         <button
+                        disabled={loading}
                         type="submit"
-                        className="bg-green-500 mt-4 py-5 uppercase rounded font-bold text-sm hover:bg-green-700 transition-colors">
+                        className="bg-green-500 mt-4 py-5 uppercase rounded font-bold text-sm hover:bg-green-700 transition-colors disabled:opacity-50">
                             Garantir inscrição
                         </button>
                     </form>
