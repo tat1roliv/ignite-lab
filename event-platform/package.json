@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite run build",
-    "preview": "vite run preview",
+    "build": "vite build",
+    "preview": "vite preview",
     "codegen": "graphql-codegen"
   },
   "dependencies": {
