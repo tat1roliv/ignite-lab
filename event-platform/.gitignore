@@ -23,5 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+node_modules
+
 #variaveis de ambiente
 .env.local
